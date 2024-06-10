@@ -37,7 +37,15 @@
             margin-left: auto;
             margin-right: auto; 
         }
-        
+        h5 {
+            color: #fff5ee;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 15px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .options {
             background-color: #6A967F;
             color: #fff5ee;
@@ -57,6 +65,36 @@
         .options a:hover {
             text-decoration: underline;
         }
+        .confirm {
+            background-color: #6A967F;
+            color: #fff5ee;
+            width: 100px;
+            height: 50px;
+            padding: 10px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .confirm a {
+            color: #fff5ee;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .confirm a:hover {
+            text-decoration: underline;
+        }
+        @media screen and (max-width: 600px) {
+            .options {
+                position: static;
+                width: auto;
+                margin: 20px auto;
+                text-align: center;
+            }
+            .confirm {
+                width: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -69,10 +107,14 @@
         <a href="./create.html">Create A Post</a>
     </div>
 
-    <h2>Report An Issue:</h2>
-    <h4>Have you encountered an issue with this app? 
-        If so please report the problem to us by emailing us. 
-        Here is a link to our email: <a href="https://outlook.office.com/mail/">RateThisSpot@outlook.com</a></h4>
+    <h2>Was This Review Helpful?</h2>
+    <h4>Was this review helpful? Please click on the answer below to submit you feedback. Note once clicking you'll be sent back to the dashboard.</h4>
+    <div class="confirm">
+        <h5><a href="./index.html">Yes</a></h5>
+    </div>
+    <div class="confirm">
+        <h5><a href="./index.html">No</a></h5>
+    </div>
 
 </body>
 </html>
