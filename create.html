@@ -82,6 +82,40 @@
         .details a:hover {
             text-decoration: underline;
         }
+        .details input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #fff5ee;
+            border-radius: 0px;
+            background-color: #fff5ee;
+            color: #121010;
+        }
+        .filedetails {
+            background-color: #D79B00;
+            color: #121010;
+            width: 220px;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .filedetails a {
+            color: #121010;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .filedetails a:hover {
+            text-decoration: underline;
+        }
+        .filedetails input[type="file"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #D79B00;
+            border-radius: 0px;
+            background-color: #D79B00;
+            color: #121010;
+        }
         .confirm {
             background-color: #6A967F;
             color: #fff5ee;
@@ -101,6 +135,12 @@
         .confirm a:hover {
             text-decoration: underline;
         }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
         @media screen and (max-width: 600px) {
             .options {
                 position: static;
@@ -109,6 +149,9 @@
                 text-align: center;
             }
             .details {
+                width: auto;
+            }
+            .filedetails {
                 width: auto;
             }
             .confirm {
@@ -133,20 +176,41 @@
         When you're ready to submit it click the "Create" button below. Once made, you will be taken back to the dashboard.</h4>
 
     <div class="details">
-        <a href="">Enter Hangout Spot Name:</a>
+        <input type="text" id="name" placeholder="Enter Hangout Spot Name:">
+    </div>
+    <div class="filedetails">
+        <input type="file" id="image" accept="image/*" placeholder="Enter Image (From Device):">
     </div>
     <div class="details">
-        <a href="">Enter Image (From Device):</a>
+        <input type="text" id="rating" placeholder="Enter Rating (From 1-5):">
     </div>
     <div class="details">
-        <a href="">Enter Rating (Between 1 and 5 Stars):</a>
+        <input type="text" id="review" placeholder="Enter Review:">
     </div>
-    <div class="details">
-        <a href="">Enter Review:</a>
-    </div>
-
     <div class="confirm">
-        <h5><a href="./index.html">Create</a></h5>
+        <h5><a href="#" id="createButton">Create</a></h5>
     </div>
+    <div class="error-message" id="errorMessage1">Please fill in all the details, using valid details.</div>
+    <div class="error-message" id="errorMessage2">Rating should be between 1 and 5.</div>
+    <script>
+        document.getElementById('createButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('errorMessage1').style.display = 'none';
+            document.getElementById('errorMessage2').style.display = 'none';
+            var name = document.getElementById('name').value;
+            var rating = document.getElementById('rating').value;
+            var review = document.getElementById('review').value;
+            var image = document.getElementById('image').files[0]; 
+            if (name === '' || rating === '' || review === '' || !image) {
+                document.getElementById('errorMessage1').style.display = 'block';
+            } else if (rating !== "1" && rating !== "2" && rating !== "3" && rating !== "4" && rating !== "5") {
+                document.getElementById('errorMessage2').style.display = 'block';
+            } else {
+                document.getElementById('errorMessage1').style.display = 'none'; 
+                document.getElementById('errorMessage2').style.display = 'none'; 
+                window.location.href = './index.html';
+            }
+        });
+    </script>
 </body>
 </html>
